@@ -1,0 +1,26 @@
+package com.example.kolesnikov_advancedServer.entity;
+
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import java.util.UUID;
+
+@Data
+@NoArgsConstructor
+@Entity
+public class UserEntity {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id", nullable = false)
+    private UUID id;
+    private String avatar;
+    private String email;
+    private String userName;
+    private String password;
+    private String role = "user";
+}
