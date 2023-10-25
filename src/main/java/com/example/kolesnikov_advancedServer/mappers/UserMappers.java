@@ -11,7 +11,6 @@ import org.mapstruct.factory.Mappers;
 public interface UserMappers {
     UserMappers INSTANCE = Mappers.getMapper(UserMappers.class);
     @Mapping(target = "id", ignore = true)
-    LoginUserDto UserEntityToLoginUserDto(UserEntity user);
-    @Mapping(target = "id", ignore = true)
     UserEntity RegisterUserDtoToUserEntity (RegisterUserDto registerUserDto);
+    LoginUserDto UserEntityToLoginUserDto(UserEntity user);
 }

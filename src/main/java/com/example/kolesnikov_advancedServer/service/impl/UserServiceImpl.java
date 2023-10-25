@@ -6,21 +6,14 @@ import com.example.kolesnikov_advancedServer.entity.UserEntity;
 import com.example.kolesnikov_advancedServer.mappers.UserMappers;
 import com.example.kolesnikov_advancedServer.repository.UserRepo;
 import com.example.kolesnikov_advancedServer.service.UserService;
-import lombok.Data;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-@Data
+@RequiredArgsConstructor
 @Service
 public class UserServiceImpl implements UserService {
     private final UserMappers userMappers;
-    private final UserEntity userEntity;
     private final UserRepo userRepo;
 
-    public UserServiceImpl(UserMappers userMappers, UserEntity userEntity, UserRepo userRepo) {
-        this.userMappers = userMappers;
-        this.userEntity = userEntity;
-        this.userRepo = userRepo;
-    }
     @Override
     public LoginUserDto register(RegisterUserDto registerUserDto) {
          UserEntity userEntity = userMappers.RegisterUserDtoToUserEntity(registerUserDto);
