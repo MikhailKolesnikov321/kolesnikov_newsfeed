@@ -1,6 +1,6 @@
 package com.example.kolesnikov_advancedServer.exceptions;
 
-import com.example.kolesnikov_advancedServer.validation.ErrorCodes;
+import com.example.kolesnikov_advancedServer.validations.ErrorCodes;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 

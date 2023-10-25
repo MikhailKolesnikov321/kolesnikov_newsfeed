@@ -1,6 +1,5 @@
-package com.example.kolesnikov_advancedServer.service;
+package com.example.kolesnikov_advancedServer.services;
 
-import com.example.kolesnikov_advancedServer.dto.AuthUserDto;
 import com.example.kolesnikov_advancedServer.dto.LoginUserDto;
 import com.example.kolesnikov_advancedServer.dto.RegisterUserDto;
 import org.springframework.stereotype.Service;

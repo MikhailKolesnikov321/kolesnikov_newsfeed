@@ -1,15 +1,12 @@
-package com.example.kolesnikov_advancedServer.service.impl;
+package com.example.kolesnikov_advancedServer.services.impl;
 
 import com.example.kolesnikov_advancedServer.JwtToken.JwtTokenProvider;
-import com.example.kolesnikov_advancedServer.dto.AuthUserDto;
 import com.example.kolesnikov_advancedServer.dto.LoginUserDto;
 import com.example.kolesnikov_advancedServer.dto.RegisterUserDto;
 import com.example.kolesnikov_advancedServer.entity.UserEntity;
-import com.example.kolesnikov_advancedServer.exceptions.CustomException;
-import com.example.kolesnikov_advancedServer.validation.ErrorCodes;
 import com.example.kolesnikov_advancedServer.mappers.UserMappers;
-import com.example.kolesnikov_advancedServer.repository.UserRepo;
-import com.example.kolesnikov_advancedServer.service.UserService;
+import com.example.kolesnikov_advancedServer.repositories.UserRepo;
+import com.example.kolesnikov_advancedServer.services.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;

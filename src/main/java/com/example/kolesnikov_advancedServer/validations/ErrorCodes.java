@@ -1,4 +1,4 @@
-package com.example.kolesnikov_advancedServer.validation;
+package com.example.kolesnikov_advancedServer.validations;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

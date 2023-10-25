@@ -1,6 +1,6 @@
-package com.example.kolesnikov_advancedServer.validation;
+package com.example.kolesnikov_advancedServer.validations;
 
-public interface ValidationConstants {
+public interface ValidationConstants  {
     String USERNAME_SIZE_NOT_VALID = "Username size should be between 3 and 25";
     String NEWS_DESCRIPTION_SIZE_NOT_VALID = "News description size should be between 3 and 130";
     String NEWS_DESCRIPTION_HAS_TO_BE_PRESENT = "News description mustn't be null";

@@ -1,9 +1,8 @@
-package com.example.kolesnikov_advancedServer.controller;
+package com.example.kolesnikov_advancedServer.controllers;
 
-import com.example.kolesnikov_advancedServer.dto.AuthUserDto;
 import com.example.kolesnikov_advancedServer.dto.CustomSuccessResponse;
 import com.example.kolesnikov_advancedServer.dto.RegisterUserDto;
-import com.example.kolesnikov_advancedServer.service.impl.UserServiceImpl;
+import com.example.kolesnikov_advancedServer.services.impl.UserServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

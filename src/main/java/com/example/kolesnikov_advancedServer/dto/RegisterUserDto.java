@@ -1,6 +1,6 @@
 package com.example.kolesnikov_advancedServer.dto;
 
-import com.example.kolesnikov_advancedServer.validation.ValidationConstants;
+import com.example.kolesnikov_advancedServer.validations.ValidationConstants;
 import lombok.Data;
 import org.hibernate.validator.constraints.Length;
 
