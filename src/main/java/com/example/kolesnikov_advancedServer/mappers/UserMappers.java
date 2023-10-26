@@ -1,8 +1,8 @@
 package com.example.kolesnikov_advancedServer.mappers;
 
-import com.example.kolesnikov_advancedServer.dto.LoginUserDto;
-import com.example.kolesnikov_advancedServer.dto.RegisterUserDto;
-import com.example.kolesnikov_advancedServer.entity.UserEntity;
+import com.example.kolesnikov_advancedServer.dtos.LoginUserDto;
+import com.example.kolesnikov_advancedServer.dtos.RegisterUserDto;
+import com.example.kolesnikov_advancedServer.entities.UserEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;

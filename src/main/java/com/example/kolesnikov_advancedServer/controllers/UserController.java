@@ -1,7 +1,7 @@
 package com.example.kolesnikov_advancedServer.controllers;
 
-import com.example.kolesnikov_advancedServer.dto.CustomSuccessResponse;
-import com.example.kolesnikov_advancedServer.dto.RegisterUserDto;
+import com.example.kolesnikov_advancedServer.dtos.CustomSuccessResponse;
+import com.example.kolesnikov_advancedServer.dtos.RegisterUserDto;
 import com.example.kolesnikov_advancedServer.services.impl.UserServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -16,10 +16,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("v1/auth/")
 public class UserController {
-    private final UserServiceImpl userServiceImpl;
+
+    private final UserServiceImpl userService;
 
     @PostMapping("register")
     public ResponseEntity register(@Validated @RequestBody RegisterUserDto userDto) {
-        return new ResponseEntity<>(CustomSuccessResponse.ok(userServiceImpl.register(userDto)), HttpStatus.OK);
+        return new ResponseEntity<>(CustomSuccessResponse.ok(userService.register(userDto)), HttpStatus.OK);
     }
+
+
 }

@@ -1,9 +1,9 @@
 package com.example.kolesnikov_advancedServer.services.impl;
 
 import com.example.kolesnikov_advancedServer.JwtToken.JwtTokenProvider;
-import com.example.kolesnikov_advancedServer.dto.LoginUserDto;
-import com.example.kolesnikov_advancedServer.dto.RegisterUserDto;
-import com.example.kolesnikov_advancedServer.entity.UserEntity;
+import com.example.kolesnikov_advancedServer.dtos.LoginUserDto;
+import com.example.kolesnikov_advancedServer.dtos.RegisterUserDto;
+import com.example.kolesnikov_advancedServer.entities.UserEntity;
 import com.example.kolesnikov_advancedServer.mappers.UserMappers;
 import com.example.kolesnikov_advancedServer.repositories.UserRepo;
 import com.example.kolesnikov_advancedServer.services.UserService;
@@ -22,7 +22,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public LoginUserDto register(RegisterUserDto registerUserDto) {
         registerUserDto.setPassword(passwordEncoder.encode(registerUserDto.getPassword()));
-         UserEntity userEntity = userMappers.RegisterUserDtoToUserEntity(registerUserDto);
+        UserEntity userEntity = userMappers.RegisterUserDtoToUserEntity(registerUserDto);
         userRepo.save(userEntity);
         LoginUserDto loginUserDto = userMappers.UserEntityToLoginUserDto(userEntity);
         String token = jwtTokenProvider.generateToken(userEntity.getId().toString());

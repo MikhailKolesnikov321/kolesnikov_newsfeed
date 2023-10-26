@@ -1,8 +1,7 @@
-package com.example.kolesnikov_advancedServer.entity;
+package com.example.kolesnikov_advancedServer.entities;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.objenesis.instantiator.util.UnsafeUtils;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,7 +14,7 @@ import java.util.UUID;
 @Data
 @NoArgsConstructor
 @Entity
-@Table(name = "user_entity")
+@Table(name = "users")
 public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

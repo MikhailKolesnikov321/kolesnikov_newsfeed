@@ -5,9 +5,11 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 @Data
-@EqualsAndHashCode(callSuper=false)
+@EqualsAndHashCode(callSuper = false)
 public class CustomException extends RuntimeException {
- private final ErrorCodes errorCodes;
+
+    private final ErrorCodes errorCodes;
+
     public CustomException(ErrorCodes errorCodes) {
         super(errorCodes.getMessage());
         this.errorCodes = errorCodes;

@@ -1,4 +1,4 @@
-package com.example.kolesnikov_advancedServer.dto;
+package com.example.kolesnikov_advancedServer.dtos;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;

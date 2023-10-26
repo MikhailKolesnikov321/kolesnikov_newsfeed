@@ -14,8 +14,10 @@ import java.util.Date;
 public class JwtTokenProvider {
     @Value("${jwt.secret}")
     private String jwtSecretKey;
+
     @Value("${jwt.expiration}")
     private Long jwtExpiration;
+
     public String generateToken(String userId) {
         return Jwts.builder()
                 .setSubject(userId)
@@ -24,10 +26,12 @@ public class JwtTokenProvider {
                 .signWith(SignatureAlgorithm.HS512, jwtSecretKey)
                 .compact();
     }
+
     public String getUserIdFromToken(String token) {
         Claims claims = Jwts.parser().setSigningKey(jwtSecretKey).parseClaimsJws(token).getBody();
         return claims.getSubject();
     }
+
     public boolean validateToken(String token) {
         try {
             Jwts.parser().setSigningKey(jwtSecretKey).parseClaimsJws(token);

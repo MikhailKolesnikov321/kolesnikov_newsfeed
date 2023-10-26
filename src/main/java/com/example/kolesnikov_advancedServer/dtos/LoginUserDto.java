@@ -1,4 +1,4 @@
-package com.example.kolesnikov_advancedServer.dto;
+package com.example.kolesnikov_advancedServer.dtos;
 
 import lombok.Data;
 
