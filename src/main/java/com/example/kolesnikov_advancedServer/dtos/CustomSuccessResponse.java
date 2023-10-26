@@ -19,6 +19,7 @@ public class CustomSuccessResponse<T> {
                 .setStatusCode(0)
                 .setSuccess(true);
     }
+
     public static <T> CustomSuccessResponse badRequest(Integer[] errors) {
         return new CustomSuccessResponse()
                 .setErrors(errors)

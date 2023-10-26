@@ -1,5 +1,6 @@
 package com.example.kolesnikov_advancedServer.controllers;
 
+import com.example.kolesnikov_advancedServer.dtos.AuthUserDto;
 import com.example.kolesnikov_advancedServer.dtos.CustomSuccessResponse;
 import com.example.kolesnikov_advancedServer.dtos.RegisterUserDto;
 import com.example.kolesnikov_advancedServer.services.impl.UserServiceImpl;
@@ -15,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("v1/auth/")
-public class UserController {
+public class AuthController {
 
     private final UserServiceImpl userService;
 
@@ -24,5 +25,8 @@ public class UserController {
         return new ResponseEntity<>(CustomSuccessResponse.ok(userService.register(userDto)), HttpStatus.OK);
     }
 
-
+    @PostMapping("login")
+    public ResponseEntity login(@Validated @RequestBody AuthUserDto authUserDto) {
+        return new ResponseEntity<>(CustomSuccessResponse.ok(userService.login(authUserDto)), HttpStatus.OK);
+    }
 }

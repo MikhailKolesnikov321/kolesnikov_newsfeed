@@ -17,6 +17,7 @@ import java.io.IOException;
 @Component
 @RequiredArgsConstructor
 public class JwtTokenFilter extends OncePerRequestFilter {
+
     private final JwtTokenProvider jwtTokenProvider;
 
     @Override
@@ -24,7 +25,6 @@ public class JwtTokenFilter extends OncePerRequestFilter {
                                     HttpServletResponse response,
                                     FilterChain filterChain) throws ServletException, IOException {
         String jwtToken = extractJwtToken(request);
-
         if (jwtToken != null && jwtTokenProvider.validateToken(jwtToken)) {
             Claims claims = Jwts.parser().setSigningKey(jwtTokenProvider.getJwtSecretKey()).parseClaimsJws(jwtToken).getBody();
             String username = claims.getSubject();

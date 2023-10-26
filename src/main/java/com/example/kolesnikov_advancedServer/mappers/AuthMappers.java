@@ -8,10 +8,12 @@ import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 
 @Mapper(componentModel = "spring")
-public interface UserMappers {
-    UserMappers INSTANCE = Mappers.getMapper(UserMappers.class);
+public interface AuthMappers {
+    AuthMappers INSTANCE = Mappers.getMapper(AuthMappers.class);
+
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "token", ignore = true)
-    UserEntity RegisterUserDtoToUserEntity (RegisterUserDto registerUserDto);
+    UserEntity RegisterUserDtoToUserEntity(RegisterUserDto registerUserDto);
+
     LoginUserDto UserEntityToLoginUserDto(UserEntity user);
 }
