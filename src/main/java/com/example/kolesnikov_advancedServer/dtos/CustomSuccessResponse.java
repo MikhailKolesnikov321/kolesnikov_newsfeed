@@ -1,4 +1,4 @@
-package com.example.kolesnikov_advancedServer.dto;
+package com.example.kolesnikov_advancedServer.dtos;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
@@ -19,6 +19,7 @@ public class CustomSuccessResponse<T> {
                 .setStatusCode(0)
                 .setSuccess(true);
     }
+
     public static <T> CustomSuccessResponse badRequest(Integer[] errors) {
         return new CustomSuccessResponse()
                 .setErrors(errors)

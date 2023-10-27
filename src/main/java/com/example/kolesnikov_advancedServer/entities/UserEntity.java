@@ -1,4 +1,4 @@
-package com.example.kolesnikov_advancedServer.entity;
+package com.example.kolesnikov_advancedServer.entities;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,11 +8,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.UUID;
 
 @Data
 @NoArgsConstructor
 @Entity
+@Table(name = "users")
 public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -23,4 +25,5 @@ public class UserEntity {
     private String userName;
     private String password;
     private String role = "user";
+    private String token;
 }

@@ -1,6 +1,5 @@
-package com.example.kolesnikov_advancedServer.exeption;
+package com.example.kolesnikov_advancedServer.validations;
 
-import com.example.kolesnikov_advancedServer.validation.ValidationConstants;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
