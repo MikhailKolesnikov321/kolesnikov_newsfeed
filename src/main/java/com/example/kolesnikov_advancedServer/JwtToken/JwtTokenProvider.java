@@ -20,7 +20,7 @@ public class JwtTokenProvider {
     private Long jwtExpiration;
 
     public String generateToken(String userId) {
-        return Jwts.builder()
+        return  "Bearer " + Jwts.builder()
                 .setSubject(userId)
                 .setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis() + jwtExpiration))
