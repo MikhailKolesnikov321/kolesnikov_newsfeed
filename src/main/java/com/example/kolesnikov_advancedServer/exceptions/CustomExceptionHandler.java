@@ -8,6 +8,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+
 import javax.validation.ConstraintViolationException;
 
 import static com.example.kolesnikov_advancedServer.validations.ErrorCodes.findByMessage;
@@ -37,7 +38,8 @@ public class CustomExceptionHandler {
 
     @ExceptionHandler(NullPointerException.class)
     public ResponseEntity handleException(NullPointerException e) {
-        return new ResponseEntity(CustomSuccessResponse.badRequest(new Integer[]{findByMessage(ErrorCodes.AUTH_IS_NULL.getMessage()).getCode()}), HttpStatus.UNAUTHORIZED);
+        return new ResponseEntity(CustomSuccessResponse.badRequest
+                (new Integer[]{findByMessage(ErrorCodes.AUTH_IS_NULL.getMessage()).getCode()}), HttpStatus.UNAUTHORIZED);
     }
 
     @ExceptionHandler(CustomException.class)
