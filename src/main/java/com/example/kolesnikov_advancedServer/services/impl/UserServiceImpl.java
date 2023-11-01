@@ -1,7 +1,7 @@
 package com.example.kolesnikov_advancedServer.services.impl;
 
 import com.example.kolesnikov_advancedServer.JwtToken.JwtTokenProvider;
-import com.example.kolesnikov_advancedServer.dtos.AuthUserDto;
+import com.example.kolesnikov_advancedServer.dtos.AuthDto;
 import com.example.kolesnikov_advancedServer.dtos.LoginUserDto;
 import com.example.kolesnikov_advancedServer.dtos.RegisterUserDto;
 import com.example.kolesnikov_advancedServer.entities.UserEntity;
@@ -14,6 +14,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @RequiredArgsConstructor
 @Service
 public class UserServiceImpl implements UserService {
@@ -24,6 +26,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public LoginUserDto register(RegisterUserDto registerUserDto) {
+        if(userRepo.findByEmail(registerUserDto.getEmail()).isPresent()){
+            throw new CustomException(ErrorCodes.USER_ALREADY_EXISTS);
+        }
         registerUserDto.setPassword(passwordEncoder.encode(registerUserDto.getPassword()));
         UserEntity userEntity = userMappers.RegisterUserDtoToUserEntity(registerUserDto);
         userRepo.save(userEntity);
@@ -34,9 +39,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public LoginUserDto login(AuthUserDto authUserDto){
+    public LoginUserDto login(AuthDto authUserDto){
         UserEntity userEntity = userRepo.findByEmail(authUserDto.getEmail())
-                .orElseThrow(() -> new CustomException(ErrorCodes.USER_EMAIL_NOT_NULL));
+                .orElseThrow(() -> new CustomException(ErrorCodes.USER_NOT_FOUND));
         if (!passwordEncoder.matches(authUserDto.getPassword(), userEntity.getPassword())) {
             throw new CustomException(ErrorCodes.PASSWORD_NOT_VALID);
         }

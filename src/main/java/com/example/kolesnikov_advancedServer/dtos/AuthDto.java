@@ -7,7 +7,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 
 @Data
-public class AuthUserDto {
+public class AuthDto {
 
     @NotNull(message = ValidationConstants.USER_EMAIL_NOT_NULL)
     @Length(min = 3, max = 100, message = ValidationConstants.EMAIL_SIZE_NOT_VALID)

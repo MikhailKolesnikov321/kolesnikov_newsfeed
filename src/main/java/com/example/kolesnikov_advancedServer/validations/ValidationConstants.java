@@ -1,13 +1,14 @@
 package com.example.kolesnikov_advancedServer.validations;
 
-public interface ValidationConstants  {
+public interface ValidationConstants {
+    String UNKNOWN = "Unknown";
     String USERNAME_SIZE_NOT_VALID = "Username size should be between 3 and 25";
     String NEWS_DESCRIPTION_SIZE_NOT_VALID = "News description size should be between 3 and 130";
     String NEWS_DESCRIPTION_HAS_TO_BE_PRESENT = "News description mustn't be null";
     String ID_MUST_BE_POSITIVE = "ID must be grater than zero";
     String REQUIRED_INT_PARAM_PAGE_IS_NOT_PRESENT = "Parameter page mustn't be null";
     String REQUIRED_INT_PARAM_PER_PAGE_IS_NOT_PRESENT = "Parameter perPage mustn't be null";
-    String USERNAME_HAS_TO_BE_PRESENT = "Username mustn't be null";
+    String USERNAME_HAS_TO_BE_PRESENT = "User name has to be present";
     String TAGS_NOT_VALID = "Tags invalid";
     String NEWS_IMAGE_HAS_TO_BE_PRESENT = "Image mustn't be null";
     String USER_WITH_THIS_EMAIL_ALREADY_EXIST = "User with this email already exists";
@@ -31,10 +32,11 @@ public interface ValidationConstants  {
     String TOKEN_NOT_PROVIDED = "JWT token not provided";
     String USER_ID_NULL = "User id must be null";
     String USERNAME_NULL = "Username must be null";
-    String USER_ROLE_NULL = "User role must be null";
+    String USER_ROLE_NOT_NULL = "User role must be null";
     String TOKEN_POSITION_MISMATCH = "Token must be in authorization header";
     String NEWS_IMAGE_LENGTH = "Image link length should be between 3 and 130";
     String NEWS_ID_NULL = "News id must be null";
+    String USER_NOT_FOUND = "User not found";
     String PASSWORD_NOT_VALID = "password not valid";
     String USER_NAME_HAS_TO_BE_PRESENT = "User name has to be present";
     String TODO_TEXT_NOT_NULL = "todo text not null";

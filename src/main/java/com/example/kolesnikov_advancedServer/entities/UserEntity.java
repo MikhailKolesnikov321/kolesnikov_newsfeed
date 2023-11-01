@@ -22,7 +22,7 @@ public class UserEntity {
     private UUID id;
     private String avatar;
     private String email;
-    private String userName;
+    private String name;
     private String password;
     private String role = "user";
     private String token;
