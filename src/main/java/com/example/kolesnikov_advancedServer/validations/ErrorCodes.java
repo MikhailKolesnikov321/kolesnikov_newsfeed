@@ -9,17 +9,17 @@ import java.util.Map;
 @Getter
 @RequiredArgsConstructor
 public enum ErrorCodes {
-    UNKNOWN(0, "unknown"),
+    UNKNOWN(0, ValidationConstants.UNKNOWN),
     USERNAME_SIZE_NOT_VALID(1, ValidationConstants.USERNAME_SIZE_NOT_VALID),
     ROLE_SIZE_NOT_VALID(2, ValidationConstants.ROLE_SIZE_NOT_VALID),
     EMAIL_SIZE_NOT_VALID(3, ValidationConstants.EMAIL_SIZE_NOT_VALID),
     MUST_NOT_BE_NULL(4, "must not be null"),
-    USER_NOT_FOUND(5, ValidationConstants.USER_EMAIL_NOT_NULL),
+    USER_NOT_FOUND(5, ValidationConstants.USER_NOT_FOUND),
     TOKEN_NOT_PROVIDED(6, ValidationConstants.TOKEN_NOT_PROVIDED),
     UNAUTHORISED(7, "unauthorised"),
     USER_EMAIL_NOT_NULL(8, ValidationConstants.USER_EMAIL_NOT_NULL),
     USER_PASSWORD_NULL(9, ValidationConstants.USER_PASSWORD_NULL),
-    USER_ROLE_NOT_NULL(10, ValidationConstants.USER_PASSWORD_NULL),
+    USER_ROLE_NOT_NULL(10, ValidationConstants.USER_ROLE_NOT_NULL),
     NEWS_DESCRIPTION_SIZE(11, ValidationConstants.NEWS_DESCRIPTION_SIZE_NOT_VALID),
     NEWS_DESCRIPTION_NOT_NULL(12, ValidationConstants.NEWS_DESCRIPTION_HAS_TO_BE_PRESENT),
     NEWS_TITLE_SIZE(13, ValidationConstants.NEWS_TITLE_SIZE),
@@ -35,7 +35,6 @@ public enum ErrorCodes {
     MAX_UPLOAD_SIZE_EXCEEDED(23, ValidationConstants.MAX_UPLOAD_SIZE_EXCEEDED),
     USER_AVATAR_NOT_NULL(24, ValidationConstants.USER_AVATAR_NOT_NULL),
     PASSWORD_NOT_VALID(25, ValidationConstants.PASSWORD_NOT_VALID),
-    PASSWORD_NOT_NULL(26, ValidationConstants.PASSWORD_NOT_VALID),
     NEWS_NOT_FOUND(27, "news not found"),
     ID_MUST_BE_POSITIVE(29, ValidationConstants.ID_MUST_BE_POSITIVE),
     USER_ALREADY_EXISTS(30, "User already exists"),

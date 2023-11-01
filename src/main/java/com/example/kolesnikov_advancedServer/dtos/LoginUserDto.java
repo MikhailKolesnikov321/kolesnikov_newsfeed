@@ -9,7 +9,7 @@ public class LoginUserDto {
     private String avatar;
     private String email;
     private UUID id;
-    private String userName;
+    private String name;
     private String role = "user";
     private String token;
 }

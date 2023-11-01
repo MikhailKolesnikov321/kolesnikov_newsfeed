@@ -11,19 +11,19 @@ public class CustomSuccessResponse<T> {
     private T data;
     private Integer statusCode;
     private Boolean success;
-    private Integer[] errors;
+    private Integer[] codes;
 
     public static <T> CustomSuccessResponse ok(T data) {
         return new CustomSuccessResponse()
                 .setData(data)
-                .setStatusCode(0)
+                .setStatusCode(1)
                 .setSuccess(true);
     }
 
     public static <T> CustomSuccessResponse badRequest(Integer[] errors) {
         return new CustomSuccessResponse()
-                .setErrors(errors)
-                .setStatusCode(1)
-                .setSuccess(false);
+                .setCodes(errors)
+                .setStatusCode(errors[0])
+                .setSuccess(true);
     }
 }
