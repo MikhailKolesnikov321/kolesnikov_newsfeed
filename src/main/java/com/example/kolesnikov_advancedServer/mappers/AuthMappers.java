@@ -1,6 +1,7 @@
 package com.example.kolesnikov_advancedServer.mappers;
 
 import com.example.kolesnikov_advancedServer.dtos.LoginUserDto;
+import com.example.kolesnikov_advancedServer.dtos.PublicUserDto;
 import com.example.kolesnikov_advancedServer.dtos.RegisterUserDto;
 import com.example.kolesnikov_advancedServer.entities.UserEntity;
 import org.mapstruct.Mapper;
@@ -16,4 +17,6 @@ public interface AuthMappers {
     UserEntity RegisterUserDtoToUserEntity(RegisterUserDto registerUserDto);
 
     LoginUserDto UserEntityToLoginUserDto(UserEntity user);
+
+    PublicUserDto UserEntityToPublicUserDto(UserEntity userEntity);
 }
