@@ -1,7 +1,9 @@
 package com.example.kolesnikov_advancedServer.JwtToken;
 
 import com.example.kolesnikov_advancedServer.entities.UserEntity;
+import com.example.kolesnikov_advancedServer.exceptions.CustomException;
 import com.example.kolesnikov_advancedServer.repositories.UserRepo;
+import com.example.kolesnikov_advancedServer.validations.ErrorCodes;
 import lombok.Data;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -20,9 +22,8 @@ public class JwtDetailService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String name) throws UsernameNotFoundException {
         UUID id = UUID.fromString(name);
-        Optional<UserEntity> userOptional = userRepo.findById(id);
-        UserEntity userEntity = userOptional.get();
-        JwtUserDetails jwtUserDetails = JwtUserFactory.create(userEntity);
-        return jwtUserDetails;
+        UserEntity userEntity = userRepo.findById(id)
+                .orElseThrow(() -> new CustomException(ErrorCodes.UNAUTHORISED));
+        return JwtUserFactory.create(userEntity);
     }
 }

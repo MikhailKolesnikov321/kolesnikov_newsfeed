@@ -3,6 +3,7 @@ package com.example.kolesnikov_advancedServer.services;
 import com.example.kolesnikov_advancedServer.dtos.AuthDto;
 import com.example.kolesnikov_advancedServer.dtos.LoginUserDto;
 import com.example.kolesnikov_advancedServer.dtos.PublicUserDto;
+import com.example.kolesnikov_advancedServer.dtos.PutUserDto;
 import com.example.kolesnikov_advancedServer.dtos.RegisterUserDto;
 import org.springframework.stereotype.Service;
 
@@ -18,7 +19,7 @@ public interface UserService {
 
     List<PublicUserDto> getAllUsers();
 
-    PublicUserDto getUserInfoById(UUID id);
+    PublicUserDto getUserInfo(String id);
 
-    PublicUserDto getUserInfo(UUID id);
+    PublicUserDto setUserNewData(UUID id, PutUserDto putUserDto);
 }

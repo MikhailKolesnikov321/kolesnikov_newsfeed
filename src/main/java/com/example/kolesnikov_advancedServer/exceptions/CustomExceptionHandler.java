@@ -39,7 +39,7 @@ public class CustomExceptionHandler {
     @ExceptionHandler(NullPointerException.class)
     public ResponseEntity handleException(NullPointerException e) {
         return new ResponseEntity(CustomSuccessResponse.badRequest
-                (new Integer[]{findByMessage(ErrorCodes.AUTH_IS_NULL.getMessage()).getCode()}), HttpStatus.UNAUTHORIZED);
+                (new Integer[]{findByMessage(ErrorCodes.AUTH_IS_NULL.getMessage()).getCode()}), HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(CustomException.class)
