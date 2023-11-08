@@ -25,8 +25,5 @@ public class UserEntity {
     private String email;
     private String name;
     private String password;
-    private String role = "user";
-
-    @Transient
-    private String token;
+    private String role;
 }
