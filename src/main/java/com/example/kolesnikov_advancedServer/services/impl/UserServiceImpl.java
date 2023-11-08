@@ -2,6 +2,7 @@ package com.example.kolesnikov_advancedServer.services.impl;
 
 import com.example.kolesnikov_advancedServer.JwtToken.JwtTokenProvider;
 import com.example.kolesnikov_advancedServer.dtos.AuthDto;
+import com.example.kolesnikov_advancedServer.dtos.BaseSuccessResponse;
 import com.example.kolesnikov_advancedServer.dtos.LoginUserDto;
 import com.example.kolesnikov_advancedServer.dtos.PublicUserDto;
 import com.example.kolesnikov_advancedServer.dtos.PutUserDto;
@@ -98,5 +99,13 @@ public class UserServiceImpl implements UserService {
         userRepo.save(userEntity);
 
         return userMappers.UserEntityToPublicUserDto(userEntity);
+    }
+
+    @Override
+    public BaseSuccessResponse deleteUser(UUID id){
+        UserEntity userEntity = userRepo.findById(id)
+                .orElseThrow(() -> new CustomException(ErrorCodes.USER_NOT_FOUND));
+        userRepo.delete(userEntity);
+        return BaseSuccessResponse.ok();
     }
 }

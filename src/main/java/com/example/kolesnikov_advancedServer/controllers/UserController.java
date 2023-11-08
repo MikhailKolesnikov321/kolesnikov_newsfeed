@@ -11,6 +11,7 @@ import org.hibernate.validator.constraints.Length;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -53,6 +54,12 @@ public class UserController {
         authentication.getAuthorities();
         UUID id = ((JwtUserDetails)(authentication.getPrincipal())).getId();
         return new ResponseEntity<>(CustomSuccessResponse.ok(userService.setUserNewData(id, putUserDto)), HttpStatus.OK);
+    }
+
+    @DeleteMapping
+    public ResponseEntity deleteUser(Authentication authentication){
+        UUID id = ((JwtUserDetails)(authentication.getPrincipal())).getId();
+        return new ResponseEntity(userService.deleteUser(id), HttpStatus.OK);
     }
 }
 

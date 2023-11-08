@@ -1,6 +1,7 @@
 package com.example.kolesnikov_advancedServer.services;
 
 import com.example.kolesnikov_advancedServer.dtos.AuthDto;
+import com.example.kolesnikov_advancedServer.dtos.BaseSuccessResponse;
 import com.example.kolesnikov_advancedServer.dtos.LoginUserDto;
 import com.example.kolesnikov_advancedServer.dtos.PublicUserDto;
 import com.example.kolesnikov_advancedServer.dtos.PutUserDto;
@@ -22,4 +23,6 @@ public interface UserService {
     PublicUserDto getUserInfo(String id);
 
     PublicUserDto setUserNewData(UUID id, PutUserDto putUserDto);
+
+    BaseSuccessResponse deleteUser(UUID id);
 }
