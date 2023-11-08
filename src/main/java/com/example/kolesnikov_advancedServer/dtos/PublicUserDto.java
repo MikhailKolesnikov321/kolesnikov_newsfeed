@@ -10,5 +10,5 @@ public class PublicUserDto {
     private String email;
     private UUID id;
     private String name;
-    private String role = "user";
+    private String role;
 }

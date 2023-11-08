@@ -13,7 +13,6 @@ public interface AuthMappers {
     AuthMappers INSTANCE = Mappers.getMapper(AuthMappers.class);
 
     @Mapping(target = "id", ignore = true)
-    @Mapping(target = "token", ignore = true)
     UserEntity RegisterUserDtoToUserEntity(RegisterUserDto registerUserDto);
 
     LoginUserDto UserEntityToLoginUserDto(UserEntity user);

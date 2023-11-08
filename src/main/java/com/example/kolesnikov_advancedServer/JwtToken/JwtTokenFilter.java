@@ -26,13 +26,13 @@ public class JwtTokenFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest req,
                                     HttpServletResponse res,
                                     FilterChain filterChain) throws ServletException, IOException {
-        Optional<String> token = extractJwtToken(req);
-        if (token.isPresent() && jwtTokenProvider.validateToken(token.get())) {
-            String name = jwtTokenProvider.getUserIdFromToken(token.orElseThrow());
-            UserDetails userDetails = jwtDetailService.loadUserByUsername(name);
-            UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
-            SecurityContextHolder.getContext().setAuthentication(authentication);
-        }
+            Optional<String> token = extractJwtToken(req);
+            if (token.isPresent() && jwtTokenProvider.validateToken(token.get())) {
+                String name = jwtTokenProvider.getUserIdFromToken(token.orElseThrow());
+                UserDetails userDetails = jwtDetailService.loadUserByUsername(name);
+                UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
+                SecurityContextHolder.getContext().setAuthentication(authentication);
+            }
         filterChain.doFilter(req, res);
     }
 
