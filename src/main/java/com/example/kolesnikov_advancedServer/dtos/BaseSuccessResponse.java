@@ -6,7 +6,7 @@ import lombok.experimental.Accessors;
 
 @Data
 @Accessors(chain = true)
-@JsonInclude(JsonInclude.Include.NON_EMPTY)
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class BaseSuccessResponse {
     private Integer statusCode;
     private Boolean success;
