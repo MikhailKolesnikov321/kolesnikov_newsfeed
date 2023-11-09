@@ -23,7 +23,7 @@ public interface ValidationConstants {
     String PARAM_PER_PAGE_NOT_NULL = "Required Integer parameter 'perPage' is not present";
     String PARAM_PAGE_NOT_NULL = "Required Integer parameter 'page' is not present";
     String NEWS_TITLE_NOT_NULL = "title has to be present";
-    String NEWS_TITLE_SIZE = "news title size not valid";
+    String NEWS_TITLE_SIZE_NOT_VALID = "news title size not valid";
     String USER_ROLE_NOT_VALID = "user role should be between 3 and 25";
     String USER_PASSWORD_NULL = "user password must be null";
     String USER_EMAIL_NOT_NULL = "user email mustn't be null";
@@ -34,7 +34,7 @@ public interface ValidationConstants {
     String USERNAME_NULL = "Username must be null";
     String USER_ROLE_NOT_NULL = "User role must be null";
     String TOKEN_POSITION_MISMATCH = "Token must be in authorization header";
-    String NEWS_IMAGE_LENGTH = "Image link length should be between 3 and 130";
+    String NEWS_IMAGE_LENGTH_NOT_VALID = "Image link length should be between 3 and 130";
     String NEWS_ID_NULL = "News id must be null";
     String USER_NOT_FOUND = "User not found";
     String PASSWORD_NOT_VALID = "password not valid";
