@@ -22,6 +22,6 @@ public class NewsDto {
     @Length(min = 3, max = 160, message = ValidationConstants.NEWS_TITLE_SIZE_NOT_VALID)
     private String title;
 
-    private List<String> tags;
+    private List<@NotBlank(message = ValidationConstants.TAGS_NOT_VALID) String> tags;
 
 }
