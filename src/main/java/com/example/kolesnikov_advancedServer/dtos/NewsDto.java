@@ -23,5 +23,4 @@ public class NewsDto {
     private String title;
 
     private List<@NotBlank(message = ValidationConstants.TAGS_NOT_VALID) String> tags;
-
 }
