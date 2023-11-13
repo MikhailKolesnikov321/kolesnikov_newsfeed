@@ -1,5 +1,6 @@
 package com.example.kolesnikov_advancedServer.services.impl;
 
+import com.example.kolesnikov_advancedServer.dtos.BaseSuccessResponse;
 import com.example.kolesnikov_advancedServer.dtos.GetNewsOutDto;
 import com.example.kolesnikov_advancedServer.dtos.NewsDto;
 import com.example.kolesnikov_advancedServer.dtos.PageableResponse;
@@ -70,5 +71,33 @@ public class NewsServiceImpl implements NewsService {
                 .map(NewsMapper.INSTANCE::newsEntityToGetNewsOutDto)
                 .collect(Collectors.toList());
         return PageableResponse.ok(newsDtos, newsPage.getNumberOfElements());
+    }
+
+    @Override
+    public BaseSuccessResponse changeNewsData(Long id, NewsDto newsDto){
+        NewsEntity newsEntity = newsRepo.findById(id)
+                .orElseThrow(() -> new CustomException(ErrorCodes.NEWS_NOT_FOUND));
+        newsEntity.setDescription(newsDto.getDescription());
+        newsEntity.setImage(newsDto.getImage());
+        newsEntity.setTitle(newsDto.getTitle());
+        List<TagEntity> existingTags = newsEntity.getTags();
+        List<TagEntity> newTags = new ArrayList<>();
+
+        for (String tagTitle : newsDto.getTags()) {
+            TagEntity tagEntity = existingTags.stream()
+                    .filter(existingTag -> existingTag.getTitle().equals(tagTitle))
+                    .findFirst()
+                    .orElse(new TagEntity());
+
+            tagEntity.setTitle(tagTitle);
+            tagEntity.setNews(newsEntity);
+            newTags.add(tagEntity);
+        }
+
+        existingTags.clear();
+        existingTags.addAll(newTags);
+        newsEntity.setTags(existingTags);
+        newsRepo.save(newsEntity);
+        return BaseSuccessResponse.ok();
     }
 }
