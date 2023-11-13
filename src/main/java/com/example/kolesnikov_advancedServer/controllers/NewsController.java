@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
-import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @RequiredArgsConstructor
@@ -41,7 +41,7 @@ public class NewsController {
     @GetMapping("/find")
     public ResponseEntity findNews(@RequestParam (required = false) String username, @RequestParam (required = false) String keyword,
                                    @RequestParam int page, @RequestParam int perPage,
-                                   @RequestParam (required = false) ArrayList<String> tags){
+                                   @RequestParam (required = false) List<String> tags){
         return new ResponseEntity<>(CustomSuccessResponse.ok(newsService.getNewsByParam(page, perPage, username, keyword, tags)), HttpStatus.OK);
     }
 }
