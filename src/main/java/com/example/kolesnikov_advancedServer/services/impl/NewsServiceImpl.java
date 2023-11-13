@@ -26,16 +26,14 @@ import java.util.stream.Collectors;
 @Service
 @RequiredArgsConstructor
 public class NewsServiceImpl implements NewsService {
-    private final NewsMapper newsMapper;
     private final NewsRepo newsRepo;
     private final UserRepo userRepo;
-    private final TagsRepo tagsRepo;
 
     @Override
     public Long createNews(NewsDto newsDto, UUID id) {
         UserEntity userEntity = userRepo.findById(id)
                 .orElseThrow(()-> new CustomException(ErrorCodes.USER_NOT_FOUND));
-        NewsEntity newsEntity = newsMapper.newsDtoToNewsEntity(newsDto);
+        NewsEntity newsEntity = NewsMapper.INSTANCE.newsDtoToNewsEntity(newsDto);
         newsEntity.setUser(userEntity);
         List<NewsEntity> newsEntityList = new ArrayList<>();
         newsEntityList.add(newsEntity);
@@ -59,8 +57,18 @@ public class NewsServiceImpl implements NewsService {
         PageRequest pageable = PageRequest.of(page-1, perPage);
         Page<NewsEntity> newsPage = newsRepo.findAll(pageable);
         List<GetNewsOutDto> newsDtos = newsPage.getContent().stream()
-                .map(newsMapper::newsEntityToGetNewsOutDto)
+                .map(NewsMapper.INSTANCE::newsEntityToGetNewsOutDto)
                 .collect(Collectors.toList());
         return PageableResponse.ok(newsDtos, newsPage.getSize());
+    }
+
+    @Override
+    public PageableResponse getNewsByParam(int page, int perPage, String username, String keyword, List<String> tags) {
+        PageRequest pageable = PageRequest.of(page - 1, perPage);
+        Page<NewsEntity> newsPage = newsRepo.findByParams(username, keyword, tags, pageable);
+        List<GetNewsOutDto> newsDtos = newsPage.getContent().stream()
+                .map(NewsMapper.INSTANCE::newsEntityToGetNewsOutDto)
+                .collect(Collectors.toList());
+        return PageableResponse.ok(newsDtos, newsPage.getNumberOfElements());
     }
 }
