@@ -10,7 +10,6 @@ import com.example.kolesnikov_advancedServer.entities.UserEntity;
 import com.example.kolesnikov_advancedServer.exceptions.CustomException;
 import com.example.kolesnikov_advancedServer.mappers.NewsMapper;
 import com.example.kolesnikov_advancedServer.repositories.NewsRepo;
-import com.example.kolesnikov_advancedServer.repositories.TagsRepo;
 import com.example.kolesnikov_advancedServer.repositories.UserRepo;
 import com.example.kolesnikov_advancedServer.services.NewsService;
 import com.example.kolesnikov_advancedServer.validations.ErrorCodes;
@@ -18,6 +17,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -101,6 +101,7 @@ public class NewsServiceImpl implements NewsService {
         return BaseSuccessResponse.ok();
     }
 
+    @Transactional
     @Override
     public BaseSuccessResponse deleteNews(Long id){
         NewsEntity newsEntity = newsRepo.findById(id)
