@@ -100,4 +100,12 @@ public class NewsServiceImpl implements NewsService {
         newsRepo.save(newsEntity);
         return BaseSuccessResponse.ok();
     }
+
+    @Override
+    public BaseSuccessResponse deleteNews(Long id){
+        NewsEntity newsEntity = newsRepo.findById(id)
+                .orElseThrow(() -> new CustomException(ErrorCodes.NEWS_NOT_FOUND));
+        newsRepo.delete(newsEntity);
+        return BaseSuccessResponse.ok();
+    }
 }

@@ -18,4 +18,6 @@ public interface NewsService {
     PageableResponse getNewsByParam(int page, int perPage, String username, String keyword, List<String> tags);
 
     BaseSuccessResponse changeNewsData(Long id, NewsDto newsDto);
+
+    BaseSuccessResponse deleteNews(Long id);
 }
