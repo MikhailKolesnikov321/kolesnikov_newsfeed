@@ -74,30 +74,27 @@ public class NewsServiceImpl implements NewsService {
     }
 
     @Override
-    public BaseSuccessResponse changeNewsData(Long id, NewsDto newsDto){
+    public BaseSuccessResponse changeNewsData(Long id, NewsDto newsDto) {
         NewsEntity newsEntity = newsRepo.findById(id)
                 .orElseThrow(() -> new CustomException(ErrorCodes.NEWS_NOT_FOUND));
+
         newsEntity.setDescription(newsDto.getDescription());
         newsEntity.setImage(newsDto.getImage());
         newsEntity.setTitle(newsDto.getTitle());
-        List<TagEntity> existingTags = newsEntity.getTags();
-        List<TagEntity> newTags = new ArrayList<>();
 
-        for (String tagTitle : newsDto.getTags()) {
-            TagEntity tagEntity = existingTags.stream()
-                    .filter(existingTag -> existingTag.getTitle().equals(tagTitle))
-                    .findFirst()
-                    .orElse(new TagEntity());
+        List<TagEntity> newTags = newsDto.getTags().stream()
+                .map(tagTitle -> {
+                    TagEntity tagEntity = new TagEntity();
+                    tagEntity.setTitle(tagTitle);
+                    tagEntity.setNews(newsEntity);
+                    return tagEntity;
+                })
+                .collect(Collectors.toList());
 
-            tagEntity.setTitle(tagTitle);
-            tagEntity.setNews(newsEntity);
-            newTags.add(tagEntity);
-        }
+        newsEntity.setTags(newTags);
 
-        existingTags.clear();
-        existingTags.addAll(newTags);
-        newsEntity.setTags(existingTags);
         newsRepo.save(newsEntity);
+
         return BaseSuccessResponse.ok();
     }
 
@@ -109,4 +106,6 @@ public class NewsServiceImpl implements NewsService {
         newsRepo.delete(newsEntity);
         return BaseSuccessResponse.ok();
     }
+
+
 }
