@@ -88,16 +88,14 @@ public class UserServiceImpl implements UserService {
     public PublicUserDto setUserNewData(UUID id, PutUserDto putUserDto){
         UserEntity userEntity = userRepo.findById(id)
                 .orElseThrow(() -> new CustomException(ErrorCodes.USER_NOT_FOUND));
-        if (userRepo.findByEmail(putUserDto.getEmail()).isPresent()){
-            throw new CustomException(ErrorCodes.USER_ALREADY_EXISTS);
-        }
         userEntity.setAvatar(putUserDto.getAvatar());
-        userEntity.setEmail(putUserDto.getEmail());
         userEntity.setName(putUserDto.getName());
-        userEntity.setRole(putUserDto.getRole());
-
-        userRepo.save(userEntity);
-
+        userEntity.setEmail(putUserDto.getEmail());
+        if (userRepo.findByEmail(userEntity.getEmail()).isEmpty()) {
+            userRepo.save(userEntity);
+        } else {
+            throw new CustomException(ErrorCodes.USER_WITH_THIS_EMAIL_ALREADY_EXIST);
+        }
         return userMappers.UserEntityToPublicUserDto(userEntity);
     }
 
